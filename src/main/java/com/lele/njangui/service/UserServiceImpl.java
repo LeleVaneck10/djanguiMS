@@ -1,12 +1,15 @@
 package com.lele.njangui.service;
 
 import com.lele.njangui.configuration.JwtUtil;
+import com.lele.njangui.model.Role;
 import com.lele.njangui.model.User;
+import com.lele.njangui.repository.RoleRepository;
 import com.lele.njangui.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,12 +17,16 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
+
     private final JwtUtil jwtUtil;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,RoleRepository roleRepository, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
+
         this.jwtUtil = jwtUtil;
     }
     @Override
@@ -30,6 +37,12 @@ public class UserServiceImpl implements UserService {
         // Hash the user's password
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
+
+        // Set the default role "Member" to the user
+        Role defaultRole = roleRepository.findByRoleName("Member");
+
+        // Assign the default role to the user
+        user.setRoles(Collections.singleton(defaultRole));
 
         // Save the user to the repository
         return userRepository.save(user);
