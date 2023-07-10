@@ -1,0 +1,30 @@
+/* styles.css */
+
+/* Add your custom styles here */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("/static/images/landing.jpeg"); /* Replace with the path to your background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.jumbotron {
+    background-color: #fff;
+    padding: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+}
+
+section {
+    padding: 50px 0;
+}
+
+/* Add more custom styles as needed */

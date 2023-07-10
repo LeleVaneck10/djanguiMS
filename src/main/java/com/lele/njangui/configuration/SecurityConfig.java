@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/api/users/login", "/api/users/register").permitAll() // Allow unauthenticated access to login and register endpoints
+                .antMatchers("/api/users/login", "/api/users/register", "/", "/register","/login").permitAll() // Allow unauthenticated access to login and register endpoints
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable(); // Disable CSRF protection for simplicity (you should enable it in production)

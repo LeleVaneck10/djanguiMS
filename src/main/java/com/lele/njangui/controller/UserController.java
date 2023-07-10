@@ -4,7 +4,9 @@ import com.lele.njangui.model.User;
 import com.lele.njangui.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -17,10 +19,19 @@ public class UserController {
         this.userService = userService;
     }
 
+//    @GetMapping("/register")
+//    public String showRegistrationForm(Model model) {
+//        model.addAttribute("user", new User());
+//        return "register";
+//    }
+
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
+    public RedirectView registerUser(@ModelAttribute("user") User user) {
         User registeredUser = userService.registerUser(user);
-        return ResponseEntity.ok(registeredUser);
+        // Add logic for handling successful registration if needed
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/login");
+        return redirectView;
     }
 
     @PostMapping("/login")

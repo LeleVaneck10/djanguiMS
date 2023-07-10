@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Your Association Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="jumbotron text-center" style="background-image: url('static/i')" >
+    <h1>Welcome to Your Association</h1>
+    <p>A platform for managing mutual contributions, savings, and borrowing</p>
+    <a href="/register" class="btn btn-primary btn-lg">Get Started</a>
+</header>
+
+<section id="about" class="py-5">
+    <div class="container">
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin semper gravida dictum. Aenean at justo
+            eu erat laoreet aliquet. Nullam fringilla ligula et dapibus lobortis. Curabitur eu dui erat.</p>
+        <p>Phasellus sodales nisi felis, sed venenatis velit mollis ut. Integer luctus sem ac efficitur luctus. Duis
+            bibendum purus vitae tincidunt dapibus. Praesent in mi varius, finibus ex in, elementum dolor.</p>
+    </div>
+</section>
+
+<section id="features" class="py-5 bg-light">
+    <div class="container">
+        <h2>Features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Contribution Management</h4>
+                <p>Track and manage contributions from association members.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Savings and Interest</h4>
+                <p>Allow members to save money with interest and withdraw at the end of the year.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Borrowing and Repayment</h4>
+                <p>Enable members to borrow money and pay it back with interest.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5">
+    <div class="container">
+        <h2>Contact</h2>
+        <p>For inquiries or support, please contact us:</p>
+        <ul>
+            <li>Email: info@example.com</li>
+            <li>Phone: 123-456-7890</li>
+            <li>Address: 123 Main St, City, Country</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
