@@ -13,6 +13,9 @@ public interface UserService {
 
     List<User> getAllUsers();
 
+    String generateAuthToken(String username);
+
+
     // Additional methods for user-related business logic
 }
 

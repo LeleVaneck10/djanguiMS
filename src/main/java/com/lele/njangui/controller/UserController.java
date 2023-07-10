@@ -24,11 +24,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> loginUser(@RequestParam String username, @RequestParam String password) {
-        User loggedInUser = userService.loginUser(username, password);
+    public ResponseEntity<String> loginUser(@RequestParam String username, @RequestParam String password) {
+        User user = userService.loginUser(username, password);
 
-        if (loggedInUser != null) {
-            return ResponseEntity.ok(loggedInUser);
+        if (user != null) {
+            String authToken = userService.generateAuthToken(username);
+            return ResponseEntity.ok(authToken);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }

@@ -1,5 +1,6 @@
 package com.lele.njangui.service;
 
+import com.lele.njangui.configuration.JwtUtil;
 import com.lele.njangui.model.User;
 import com.lele.njangui.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,13 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;
     }
     @Override
     public User registerUser(User user) {
@@ -55,6 +58,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public String generateAuthToken(String username) {
+        return jwtUtil.generateToken(username);
     }
 
     // Implement additional methods for user-related business logic
